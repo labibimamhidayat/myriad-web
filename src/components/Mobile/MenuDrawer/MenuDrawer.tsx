@@ -99,6 +99,10 @@ export const MenuDrawerComponent: React.FC = () => {
     router.push(`/wallet?type=manage`);
   };
 
+  const handleLoginOrCreateAccount = () => {
+    router.push('/login');
+  };
+
   const handleOpenDrawer = () => {
     setOpenDrawer(!openDrawer);
   };
@@ -158,8 +162,8 @@ export const MenuDrawerComponent: React.FC = () => {
               {/* network */}
               <div className={style.wallet}>
                 <ShowIf condition={anonymous}>
-                  <Button variant="contained" color="primary" onClick={handleSignOut}>
-                    Sign in to connect wallet
+                  <Button variant="contained" color="primary" onClick={handleLoginOrCreateAccount}>
+                    Sign in or Create an Account
                   </Button>
                 </ShowIf>
                 <ShowIf condition={!anonymous}>
@@ -170,7 +174,6 @@ export const MenuDrawerComponent: React.FC = () => {
                       networks={networks}
                       isMobile={true}
                     />
-
                     <Typography component="div" className={style.address}>
                       {formatAddress(currentWallet, userWalletAddress)}
                     </Typography>
